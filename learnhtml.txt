@@ -1,0 +1,86 @@
+HTML is made out of elements
+an element is an individual component of html
+<h1>Hello World</h1> this is a h1 element
+an element has a opening tag and a closing tag some elements are content elements like the example above and some elements are standalone element
+
+<!DOCTYPE html>
+<html> #often we have a head element that contains the page title and metadata
+	<body>
+		<h1>Hello world</h1> #the body element contains all the visible content about page
+		<main>		
+			<h2>Fuck</h2>#the <h1>h2 element is smaller than h1
+			<p>click to see a dictator</p> #paragraphtext is the main text in a website
+			<!-- FUCK ERDOGAN --> #this is a comment
+			<img src="http://fcc.im/img">  #the image element doesnt have a closing tag
+		</main>
+	</body>
+</html>
+
+#the <h1>element declares the size and <h2> element is smaller than <h1>
+html5 has tags that identify diffrent content areas ex <main></main>
+                
+                IMAGE
+<img src="http://xxx.com"> this is an attribute and attributes are always paired with values and values are always in " "(quotation marks), we also can add multiple attributes in a single element ex: <img src="http://xxx.com" alt="alt is used for accessibiltiy it describes the image">
+
+we can also get the image from our local files:
+<img src="lasagna.jpg" alt="Lasagna">
+
+                LINKS
+<a href="http://catphotos.com">Click here for cat photos!</a> this element links to a website
+
+we can also put a link on another element like this:
+<p>Click here to view more <a href="http:catphotos.com">cat photos</a></p>
+
+we can also open the link in a new teb using another attribute:
+<a href="http://catphotos.com" target="_blank">cat photos</a>
+
+<a href="http://link.com"><img src="http://fcc.im" alt="a cute little cat"></a>
+                
+                 LISTS
+<h3>Cat lists</h3>
+<p>things cats love</p>
+<ul>
+	<li>cat nip</li>
+	<li>laser pointer</li>
+	<li>attention</li>
+</ul><!-- this was an unordered list -->
+
+<p>things cats <strong>hate</strong></p>
+<ol>
+	<li>dogs</li>
+	<li>noise</li>
+	<li>strangers</li>
+<ol><!-- this was an ordered list -->
+
+                 FORMS and Input elements
+<form action="/submit-cat-photo">
+	<input type="text" placeholder="cat photo url" required>
+	<button type="submit">Submit</button>
+	<input type="radio"> evet
+	<input type="radio"> hayir
+
+</form>
+
+                Div Elements
+<div class="lists"></div>  we nest some elements inside and indent 
+
+		Footer element
+<footer>
+	<p>No copyright - <a href="http://tanerpaker.com>tanerpaker.com</a></p>
+</footer>
+ 
+	     Putting together 
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Cat photo app</title>
+	</head>
+	<body>
+		<h2>Cat photo app</h2>
+		
+
+	</body>
+</html>
+
+

@@ -1,0 +1,149 @@
+sentence= 'Start a sentence and then bring it to an end 
+print('\tTab') #prints: Tab
+print(r'\tTab') #if we print it out as a raw string it gets printed out like \tTab
+
+pattern= re.compile(r'abc')
+matches= pattern.finditer(text_to_search)
+for match in matches:
+	print(match)
+#this prints the index of the matches and the matched strings
+print(text_to_search[1:4]) #if the index of the match was (1,4) this code prints the match itself
+
+pattern=re.compile(r'.') #this code will be broken cause . is a special char in re so we add a backslash before it to fix:
+pattern=re.compile(r'\.')
+another example:
+pattern= re.compile(r'coreyms\.com') # we escaped the . while searching for a url pattern
+pattern= re.compile(r'\d') #Matches all the digits
+pattern= re.compile(r'\D') #matches non digits
+pattern= re.compile(r'\w') #matches the word characters and W matches the non word chars
+pattern= re.compile(r'\s') #matches the whitespaces 
+pattern= re.compile(r'\S') #matches the nonwhitespaces
+
+ 		Anchors
+\b- word boundry
+\B-not a word boundry
+^-beginning of a sting  #it matches only if its the first word of a sentence 
+$-end of a string
+
+text_to_search= Ha HaHa
+pattern= re.compile(r'\bHa')  #this matches Ha Ha but if we were to match with \B it would Ha
+matches= pattern.finditer(text_to_search)
+for match in matches
+	print(match)
+
+pattern= re.compile(r'a$') #only matches if its the last word of the stirng 
+pattern= re.compile(r'^a') #only matches if its the first word of a string
+
+Problem: We want to match this phone number 321-555-4321
+Solution: 
+text_to_search= 321-555-4321
+pattern= re.compile(r'\d\d\d.\d\d\d.\d\d\d\d')  #this only matches strings with this pattern
+matches= pattern.finditer(text_to_search)
+for match in matches:
+	print(match) 
+Problem: What if we only wanted to match a phone number seperated by a dash(-) or a dot(.)
+solution:
+text_to_search= 412.321.6842
+		321-132-1567
+		134*684*2357
+pattern= re.compile(r'\d\d\d[-.]\d\d\d[-.]\d\d\d\d)  #this matches the first 2 lines but not the 3.
+matches= pattern.finditer(text_to_search)
+for match in matches
+	print(match)
+Problem: We numbers with the syntax of the above example but we only want to match numbers that are 800 or 900 numbers
+Solution:
+text_to_search= 413.321.6481
+		800.458.2428
+		241-356-1246
+		900.212.1562
+pattern= re.compile(r'[89]00[-.]\d\d\d[-.]\d\d\d\d)  #this will match the second and 4th lines
+matches= pattern.finditer(text_to_search)
+for match in matches
+	print(match)
+
+pattern= re.compile(r'[1-5]') #this matches numbers 1 to 5
+pattern= re.compile(r'[a-z]') #this matches lowercase a to z
+pattern= re.compile(r'[a-zA-Z]') #this matches lowercase a to z and uppercase a to z
+pattern= re.compile(r'[^a-zA-Z]') # ^inside a charset makes it match the characters that dont contain the rules of the charset in this example this matches characters that are not lowercase or uppercase a to z 
+
+problem:We want to match 3 character words that end with at but not match bat
+solution:
+text_to_search= cat
+		mat
+		pat
+		bat
+pattern= re.compile(r'[^b]at') #this satisfies our rule
+
+We can use quantifiers to match multiple chars at a time
+			Quantifiers:
+* - 0 or more
++ - 1 or more
+? - 0 or One 
+{3} - Exact number
+{3,4} - Range of numbers(Minimum, Maximum)
+
+Problem: Remember our phone number problem lets implement quantifiers to our solution
+solution:
+pattern= re.compile(r'\d{3}.\d{3}.\d{4}')
+
+[] - matches chars in brackets
+[^]- matches chars not in brackets
+|  - either or
+() - group
+
+Problem: We want to match all the Mr's and notice some has .'s 
+text_to_search= 
+Mr. Schafer
+Mr Smith
+Ms Davis
+Mr. T
+Mrs. Robinson
+
+pattern= re.compile(r'Mr\.?\s[A-Z]\w*') #this matches all the mr.'s or mr's
+
+pattern= re.compile(r'M(r|s|rs)\.?\s[A-Z]\w*') 
+#first char is M after that either r or s or rs after that 0 or 1 . after that a space after that 0 or more uppercase A-Z word characters 
+
+problem: We have bunch of urls 
+solution:
+emails=
+http://coreyms.com
+https://www.google.com
+https://youtube.com
+https://www.nasa.gov
+
+pattern= re.compile(r'https?://(www\.)?\w+\.\w+') # we can also group these note that you have learned everything completely untill here however there is missing parts afer these 
+matches= pattern.finditer(urls)
+
+for match in matches
+print(match)
+
+matches= pattern.finditer(text_to_search)  #this returns all matches with extra functionality
+matches= pattern.findall(text_to_search) #this returns all the matches
+
+		GROUPING
+We group the pattern to create multiple patterns for example for www.url.com we can match the entiner domain but print only the subdomain with using grouping.
+
+for match in matches:
+	print(match.group(1)) #this prints the first group
+	print(match.group(0)) #this prints the entiner match
+
+
+
+
+
+
+
+
+
+
+
+
+				
+
+
+
+
+
+
+
