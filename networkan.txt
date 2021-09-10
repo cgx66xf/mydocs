@@ -1,0 +1,82 @@
+tcpdump -D #lists available network interfaces
+tcpdump -i eth0  #chooses an interface to capture from
+tcpdump -i eth0 -nn #by adding the -nn switch we tell tcpdump to refrain from resolving ip addresses and port numbers to their hosnames and common port names
+tcpdump -i eth0 -e  #when using the -e switch we are asking tcpdump to include ethernet headers that is timestamp and the mac adress of the hosts
+tcpdump -i eth0 -X  #by issuing the -X switch we can see the packet a bit clearer
+tcpdump -i eth0 -nnvXX # this combines nn with -X switch 
+tcpdump -i eth0 -W /output.pcap
+tcpdump -r /output.pcap
+
+
+most networks use a /24 subnet many pentesters use subnet mask 255.255.255.0 without checking the /24 network allows computers to talk to each other as long as the first 3 octets of the ip adress is the same ex:(192.168.1.XXX) setting the subnet mask /25 will reduce this range in half and the computer will be able to talk to computers on its half 
+Generally speaking the primary way to identify if the network is a wan is to use a wan specific routing procotol such as bgp and if the schema is not within rfc 1918(10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) 
+Lan's and Wlan's will typically asign a ip addresse designated for local use (RFC 1918) and in some cases you may be given a routable ip adress 
+
+-----VPN'S-------
+There are three main types of vpn's but all 3 have the same goal of making the user feel as if they were connected to the same network 
+
+Site to site vpn's: Both the client and server are network devices typically router or firewall, and share their entire network ranges this is most commonly used to join company networks over the internet 
+
+Remote access vpn: This involves the clients computer creating a virtual interface that behaves as if its on a clients network, when analysing these vpns an important piece to consider is the routing table thats created when joining vpn's, if the vpn only creates routes for specific networks(ex:10.10.10.0/24) this is called a split-tunnel vpn meaning the internet connection is not going out of the vpn, this is good for hack the box so there is no privacy concern of monitoring your internet. However split-tunnel vpn's are not ideal for a company because if a machine is infected with malware, network based detection methods will most likely not work as that traffic goes out the internet 
+
+SSL VPN: This is essentialy a vpn that is done within our web browser and is becoming increasingly common as web browsers are becoming capable of doing anything, typically these will stream apllications or entire desktop sessions to your web breowser, a great example would be the hackthebox pwnbox 
+-------------------
+GAN's use the glass fiber infrastructure of wan's and interconnect them by international undersea cables
+
+-----------_Networking Topologies-------------------
+i dont know this lol
+
+-----------Proxies---------------
+A proxy is when a device or service sits on the middle of a connection and acts as a mediator,the mediator device in the middle must be able to inspect the contents of the traffic without the ability to be a mediator the device is technically a gateway not a proxy
+Proxies operate on the application layer
+There are 3 types of proxies:
+
+
+Dedicated proxy/ Forward proxy:
+A forward proxy is when a client makes a request to a computer and that computer carries out the request for example in a corporate network,sensitive computers may not have direct access to the internet, to access a website, they must go through a proxy(or web filter) this can be an incredibly prowerfull line of use against malware as not only does it need to bypass the web filter(easy) but it would also neet to be proxy aware or use a non-traditional C2(a way for malware to receive tasking information) if the organization only utilizes firefox the likelyhood of getting proxy-aware malware is improbable.
+Web browsers like internet explorer,edge or chrome all obey the "system proxy" settings by default if the malware utilizes winstock(native windows api) it will likely be proxy aware without any additional code.Firefox doesnt use winstock and instead uses libcurl, which enables it to use the same code on any operating system. This means malware would neet to look for firefox and pull the proxy settings which malware is highly unlikely to do.
+Alternatively, malware could use DNS as a c2 mechanism but if an organisation is monitoring Dns(which is easly done using sysmon), this type of traffic should get caught quickly.
+Another example of a forward proxy is burpsuite,as most people utilize it to forward http-requests however it can be configured to be a reverse proxy or transparent 
+
+
+Reverse proxy:
+A reverse-proxy is the reverse of forward proxy.Instead of being designed to filter outgoing requests it filters incoming requests.The common goal of reverse-proxy is to listen on an adress and forward it to a closed-off network.
+Many organisations use cloudflare as they have a robust network that can withstand most ddos attacks.By using cloudflare organisations have a way to filter the amount(and type) of traffic that gets sent to their websites 
+Hackers will configure reverse proxies on infected endpoints,the infected endpoint will listen on a port and send any client that connects to the port back to the attacker through the infected endpoint, this is useful to bypass firewalls or evade logging,organisations may have intrusion detection systems watching external web requests, if the attacker gains access to the organisation over ssh, a reverse proxy can send web requests through the ssh tunnel and evade the intrusion detection system.
+Another common reverse proxy is Mod security a web-app firewall, web app firewalls inspect web requests for malicious content and blocks the request if its malicious
+
+
+Non Transparent Proxy:
+All these proxy services act either transparently or non-transparently
+
+With a transparent proxy, the client doesnt know about its existance the transparent proxy intercepts the clients communication requests to the internet and acts as a subsitute instance to the outside the transparent proxy,like the non transparent proxy acts as a communitation partner.
+
+If its a non-transtparent proxy we must be informed about its exsitence, for this purpose we want to use a special proxy configuration that ensures that traffic to the internet is first addressed to the proxy.If this configuration does not exist we cannot communicate via proxy, however since the proxy usually provides the only communication path to other networks communication to the internet is generally cut off without a coresponding proxy configuration
+
+
+--------------Networking workflow----------------------
+Osi model is 7 layers where as the Tcp/Ip model is 4
+Osi model is older and has strict protocols
+
+In a layered system devices in a layer exchange data in a format called protocol data unit(PDU).For example when we want to browse a website on the computer the remote server software first passes the requested data to the application layer it is processed layer by layer each layer performing its assinged functions the data is than transferred through the networks physical layer untill the its received by the destination server.
+During the transmission each layer add a header to the PDU from the upper layer
+For us pentesters with tcp/ip we can quickly understand how the entiner connection is established and with osi/iso we can take it apart peace by peace and analyse it in detail
+
+Osi model:
+7 layers layer 2-4 are transport oriented layer 5-7 are application oriented 
+If thow systems communicate all 7 layers of the osi model are run through atleast twice, When an application sends a packet to the other computer the system works the layers from 7 down to 1 and the receiving computer unpacks the received packet from layer 1 up to 7 
+
+The TCP/IP model:
+4 layers
+1.Link: The link layer is responsible for placing tcp/ip packets on the network medimum and receiving packets from network
+2.Internet: Its responsible for host adressing, packaging and routing functions
+3.Transport: The transport layer is responsible for providing tcp session or udp datagram services for application layer
+4.Application: The application layer allows applications to access the other layers services and defines the protocols applications utse to exchange data
+
+
+Network layer:
+
+
+
+
+
