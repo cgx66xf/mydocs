@@ -1,0 +1,12 @@
+import logging 
+
+#logging levels allows us to specify exactly what we want to log by seperating into categories, there are 5 standart logging levels: (debug, info, warning, error, critical)
+#default logging level is set to warning and above so normally logging doesnt print out debug or info 
+
+logging.basicConfig(filename='test.log', level= logging.DEBUG)
+
+def add(num1, num2):
+	return num1+num2
+
+add_result= add(num1, num2)
+ logging.debug("Add: {} + {} = {}".format(num1, num2, add_result))
