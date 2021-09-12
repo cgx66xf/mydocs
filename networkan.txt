@@ -73,10 +73,52 @@ The TCP/IP model:
 3.Transport: The transport layer is responsible for providing tcp session or udp datagram services for application layer
 4.Application: The application layer allows applications to access the other layers services and defines the protocols applications utse to exchange data
 
-
+-----------Addressing--------------------
 Network layer:
+The network layer(layer3) of Osi controls the exchange of data packets,as these cannot be directly routed to the receiver and therefore have to be provided with routing nodes, the data packets are then transferred from node to node untill they reach their target, to implement this network layer indentifies the individual network nodes sets up and clears connection channels takes care of routing and data flow control when sending the packets addresses are evaluated and the data is routed through the network node to node there is usually no processing of data in layers above l3 in the nodes based on addresses the routing and the construction of routing tables are done.
+In short network layer is responsible for Logical addressing and Routing
 
+Ipv4 structure:
+Each network interface(network cards, network printers or routers)is assinged a unique ip adress
+Ipv4 format allows for 4.2 billion unique adresses.
+The ip adress is divided into a host part and a network part, the routher assigns the host part of the ip adress at home or by an administrator,The network admin assigns the network part on the internet this is IANA which allocates and manages the unique IP's
+Subnet Mask:
+The seperation into small networks is done using the netmasks which is as long as an IPv4 adress it describes which bit positions within the ip adress acts as network part or host part
 
+Network and Gateway addresses: 
+The two additional Ips added in the Ips column are reserved for the network adress and broadcast adress, another important role plays the default gateway which is the name for the IPv4 adress of the routher most of the time the all first IPv4 adress of the the subnets is used for the default gateway
 
+Broadcast adress:
+The broadcast Ip adress's task is to connect all devices in a network with each.
+Broadcast in a network is a message that is transmitted to all participants of a network and does not require a response.This way a host sends a data packet to all other participants of the network and in doing so communicates its Ip adress,which receivers can use to contact it, This is the last IPv4 adress that is used for broadcast
+
+Binary system:
+An Ipv4 adress divides into 4 octets each octet consists of 8 bits 
+subnetmask: 255.255.255.0 = /24 because a CIDR is the sum of all 1's in subnet
+
+-----------Subnetting----------------
+With subnets we can find out these about a network:
+Network adress, Broadcast adress, First host, Last host, Number of hosts
+
+The network adress is vital for the delivery of data packet. If the network adress is the same for the source and destination adress the data packet is delivered within the same subnet.If the network adresses are diffrent the data packet must be routed to another subnet via the default gateway
+The subnet mask determines where this seperation occur
+
+Seperation of network and host parts
+So if we set all bits 0 in the host part of the Ipv4 adress we get the respective subnets network adress
+Details of    |1st octet    |2nd octet    |3rd octet    |4th octet  
+ IPv4         1100 0000      1010 1000     0000 1100     10|00 0000
+ Subnet mask  1111 1111      1111 1111     1111 1111     11|00 0000
+ Bits         /8             /16           /24            /32 
+                192.168.12.128/26
+If we set all bits in host part of the Ipv4 adress to 1 we get the broadcast adress
+Details of    |1st octet    |2nd octet    |3rd octet    |4th octet  
+ IPv4         1100 0000      1010 1000     0000 1100     10|11 1111
+ Subnet mask  1111 1111      1111 1111     1111 1111     11|00 0000
+ Bits         /8             /16           /24            /32 
+                192.168.12.191/26
+So we now know that the Ipv4 adresses 192.168.12.128 and 192.168.12.191 are assigned all other Ipv4 adresses are accordingly between 192.168.12.129-190
+Now we know that the subnet offers us a total of 64 IPv4 adresses
+
+Subnetting into smaller networks:
 
 
