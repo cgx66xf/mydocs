@@ -1,0 +1,23 @@
+import subprocess 
+
+subprocess.run('ls') #on windows computers we have to use windows commands
+subprocess.run('dir', shell= True) #dir is a shell command and if we dont set the shell true it might give an error 
+#when we set the shell arguement True we can pass in an entire command as a string
+subprocess.run('la -la', shell= True) #we can pass in 2 arguments when shell is set to True, we can also pass in multiple arguments as a list:
+subprocess.run(['ls', '-la'])
+
+----------Piping the output-------------
+p1= subprocess.run(['ls', '-la']) 
+print(p1) #this prints out the line below and not the result of the query
+CompletedProcess(args=['ls', '-la'],returncode 0)
+print(p1.args) #prints ['ls', '-la']
+print(p1.returncode) #prints the returncode if 0 that means there is no errors 
+
+p1= subprocess.run(['ls', '-la']), capture_output= True)
+print(p1.stdout)  #captures the output as bytes 
+print(p1.stdout.decode()) # print the output as strings 
+
+
+
+
+
