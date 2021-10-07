@@ -18,6 +18,9 @@ To change logging format we have to add some special values to our basic config 
 
 logging.basicConfig(filename= 'test.log', level= logging.DEBUG, format= '%(asctime)s:%(levelname)s:%(message)s:%(name)s')
 
+--------------------Advanced logging---------------------
+
+
 
 
 
