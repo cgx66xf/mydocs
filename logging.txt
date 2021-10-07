@@ -10,3 +10,16 @@ def add(num1, num2):
 
 add_result= add(num1, num2)
  logging.debug("Add: {} + {} = {}".format(num1, num2, add_result))
+ 
+ #default logging format =
+ DEBUG:root:Add 10 + 20 = 30
+----------------------------Logging format-------------
+To change logging format we have to add some special values to our basic config (i.e. LogRecord Attributes)
+
+logging.basicConfig(filename= 'test.log', level= logging.DEBUG, format= '%(asctime)s:%(levelname)s:%(message)s:%(name)s')
+
+
+
+
+
+
