@@ -1,0 +1,119 @@
+-Major marchine learning techniques:
+	
+	Regression/Estimation
+		Usefull for predicting continious values ex:
+		Price of a houseestimating or the CO2 emissions of an engine
+	
+	Classification
+		Predicting the item class/category of a case
+		Ex:Classifying if a cell is benine or malignant
+	
+	Clustering
+		Finding the structure of data; summarization
+		Example of clustering is finding similar patients or customer segmentation
+		
+	Associations
+		Associating frequent co-occuring events/items
+		Example of associations would be grocery items that are bought together by a customer
+		
+	Anomaly Detection
+		Discovering anormal or absurd cases
+		Ex: Credit card fraud detection
+	
+	Sequence mining
+		Predicting the next events; Clickstream in websites
+		
+	Dimension Reduction
+		Used for reducing the size of data
+	
+	Reccomendation Systems
+	 	Associates peoples preferances to similar people and gives recommendations depending on that
+
+-------------------------------------------------------------------------------------------------------------------
+Machine learning is the branch of ai that covers the statistical part of ai, it teaches the computer solving of problems by looking at hundereds or thousands of examples learning from them and than using that exprience to solve the same problem in new situations
+
+Deep learning is a special field of machine learning where computers can actually learn and make intelligent decisions on their own, deep learning involves a deeper level of automation in comparison with most ml algorithms
+---------------------------Python for Ml----------------------
+NumPy is a python library for working with N dimensional arrays
+Scipy is a collection of numerical algorithms and domain specific toolboxes scipy is a good library for high performance scientific programming
+Matplotlib is a library for 2d and 3d plotting
+Pandas is a high level python library that provides high performance easy to use data structures
+
+Scikitlearn is a collection of algorithms and tools for machine learning
+It has most of the classification, Regression and Clustering algorithms 
+Works with numpy and scipy
+
+Machine learning algorithms benefit from standardization of the dataset if there is some outliers or diffrent scales in our dataset we have to change them
+The preprocessing package from sckikit learn provides several utility functions and transformer classes to change raw feature vectors into a suitable form  of vector for modeling
+
+You have to split your dataset into train and test sets to train your model and then test the models accuracy seperately 
+Scikitlearn can split arrays or matrices into random train and test subsets for you in one line of code, than you can set up your algorithm
+for example: You can build a classifier using a support vector classification algorithm
+-------------------------Supervised vs Unsupervised----------------------
+How do we teach a model:
+We teach a model by feeding it with a labeled dataset 
+There are 2 types of supervised learning: Classification and Regression
+Classification is the process of predicting discrete class labels or categories 
+Regression is the process of predicting continuous values
+
+In unsupervised learning we let the model discover information on its own that may be invisible to human eye
+Unsupervised algorithms draws conclusions on unlabeled data
+Unsupervised algorithms are more difficult than supervised 
+Unsupervised learning techniques:
+	Dimension Reduction
+	Density estimation
+	Market basket analysis
+	Clustering
+	
+Supervised                 |     Unuspervised
+-Classification                  -Clustering
+classifies labeled data          Finds patterns and groupings from unlabeled data
+-Regression                      
+
+-----------------------------------------Regression----------------------
+In regression there is 2 types of variables
+A dependent variable X and one or more independent variables
+Dependent variable Y can be seen as the target we are trying to predict
+A regression model relates y to a function of x 
+The key point of regression is the dependent value should be continious and cannot be discrete however the independent variable can be measured in a categorical value or a continous scale
+
+Two types of regression models:
+	-Simple Regression:
+		Simple Linear Regression:     Predicting co2 emmision vs Engine size
+		Simple Non-Linear Regression
+	 Simple regression is when an independent value is used to predict an dependent value 
+	-Multiple Regression:
+	When more than one indpendent variable is used to predict the dependent variable its multiple regression
+		Multiple linear regression     Predicting co2 emission vs Engine size and Cylinders 
+		Multiple non-linear regression
+
+Regression Algorithms
+-Ordinal regression, -Poisson regression, -Fast forest quantile regression
+-Linear, Polynomial, Lasso, Stepwise, Ridge regression
+-Bayessian linear regression, -Neural network regression, -Decision forest regression
+-Boosted decision tree regression, -KNN(K-nearest neighbors)regression
+
+
+---Simple linear regression:
+In simple linear regression we fit a line in the graph
+y= i+jx we represent the line as a polynomial   j is the slope and i is the intercept
+Now the question is how do we draw a line through the point and which line fits best
+
+How to find the best fitting line in simple linear regression:
+Error= y(prediction)-y(actual)   #this is also called residual error
+     = 250 - 340 
+     = -90
+Error is the disctance from the datapoint to the fitted regression line
+The mean of all residual errors shows how poorly the line fits with the whole dataset
+The mathmetical represantation of this:
+	        1  n 
+           MSE=	-  |  (y(prediction)-y(actual))^2
+                n  i=1
+# | is a summation notation
+The objective of linear regression is to minimise the MSE(Mean squared error) to do that we should find the best parameters i and j for the equation y=i+jx
+There is 2 options to do that: Mathematical approach and Optimization Approach
+Mathematical approach to do this:
+Week2 Simple linear regression minute 8
+
+	 	
+
