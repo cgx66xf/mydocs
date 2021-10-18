@@ -1,4 +1,4 @@
--Major marchine learning techniques:
+ls-Major marchine learning techniques:
 	
 	Regression/Estimation
 		Usefull for predicting continious values ex:
@@ -153,4 +153,32 @@ Relative absolute error:
 Relative sqared error: Used to calculate R squared and used by the data scientist
 R^= 1- RSE and represents how close the data values are to the fitted regression line the higher the r squared the better the model fits your data
 
+----------------------Multiple Linear Regression-----------------------
+2 use cases for multiple linear regression
+1-Independent variables effectiveness on prediction: Does gender and age have impacts on exam performance
+2-Predicting impacts of changes: How much does blood pressure change for unic change in body mass index
 
+Predicting continious values with multiple regression:
+Generally multiple regression model is of the form:  y= 0+ 0*x+ 0*x + ... + 0n*xn
+We can show it as a vector form as well:  y= 0^T X  the dot products of the parameters vector and the feature set vector 
+
+Estimating the paramater 0(theta) : 
+	Ordinary least squares:
+		Ordinary least squares tries to estimate the values of the co-efficents by minimizing the MeanSquareError(MSE) 
+		This approach uses the data as a matrix and uses linear algebra operations to estimate the optimal values for theta
+		Takes a long time(+10k rows)  
+	Optimization algorithm methods:
+		1-Gradient descent: Starts optimization with random values for each co-efficent, than calculates the errors and tries to minimize it by changing the co-efficents in multiple iterations gradient descent is the proper 		approach if you have a large dataset
+		2-There is also other coefficent approximation methods
+		
+After we find the parameters of the linear regression making predictions is as simple as solving the equation for a specific set of inputs 
+y= 0^T X   0^T= [125, 6.2, 14, ...] so y= 125+ 6.2x+ 14x+ ... so CO2EM= 125+ 6.2ENGINESIZE+ 14CYLINDERS+ ...
+
+Adding too many independent variables without any theoretical justification may result in a overfit model
+Categorical independent variables can be incorperated into a regression model by converting them into numerical variables, for example a 0 for manual cars and 1 for automatic cars 
+
+Note: Remember that multiple linear regression is a linear type of regression so there needs to be a linear relationship between each of the independent variables and dependent variable.
+There are multiple ways to check for linearity for example you can use scatter plots and then visually check for linearity, if the relationship displayed in your scatterplot is not linear than we need to use non-linear regression
+
+
+	
