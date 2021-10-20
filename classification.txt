@@ -1,0 +1,52 @@
+--------------Classification-------------------
+A supervised learning approach
+Categorising some unknown items into a discrete set of "classes"
+The target attribute is categorical variable
+Multiclass classification is a classifier that can predict a field with multiple discrete values, such as ”DrugA", ”DrugX" or "DrugY”. 
+
+Types of classification algorithms:
+	Decision trees(ID3, C4.5, C5.0)
+	Naive bayes
+	Linear discriminant analysis 
+	k-Nearest neighboor 
+	Logistic regression
+	Neural networks
+	Support Vector machines 
+
+------------- K- nearest neighboor -----------
+Lets say we have a new customer with a known age and income, How can we find the class of this customer? Can we also say that the class of our new customer is most probebly group four because its nearest neighbor is also class four, yes we can in fact it is the first nearest neighboor. Now the question is to what extent can we trust our judgement which is based on the first nearest neighboor?It might be a poor judgement especially if the first nearest neighboor is a very specific case or an outlier, coorect? Now lets look at our scatter plot again rather than choose the first nearest neighbor what if we chose the five nearst neighboors and did a majority vote among them to define the class of our new customer? In this case we'd see that three out of five neighbors tell us to go for class 3 doesnt this make more sense? Yes infact it does.In this case the value of K in KNN algorithm is 5  so 5-NN -----> Class 3
+K nearest neigboor algorithm is a classification algorithm that takes a bunch of neigboored points and uses them to learn how to label other points.Its a method for classifying cases based on their similarity to other cases 
+The algorithm:
+	1-Pick a value for K
+	2-Calculate the distance of unknown case from all cases
+	3-Select the K-observations in the training data that are nearest to the unknown data points 
+	4-Predict the response of the unknown data point using the most popular response value from the K-nearest neighboors
+	
+	2-Calculating the similarity/distance in a 1 dimensional plane 
+	Dis(x1,x2)= sqrt(summation(x1-x2)^2))
+	Dis(34,30)= sqrt(summation(34-30)^2))= 4
+	
+	2-Calculating the similarity/distance in a 2 dimensional space
+	Customer1_age= 34; Customer1_income= 190
+	Customer2_age= 30; Customer2_income= 200
+	
+	=sqrt((34-30)^2+(190-200)^2)= 10.77
+	
+A very low value of k causes a highly complex model as well, which might result in overfitting of the model.It means the prediction process is not generalized enough to be used for out-of-sample cases.
+A very high value of k causes the model to be overly generalized so how can we find the best value of K ?
+The general solution is to reserve a port of your data for testing the accuracy of the model.Once you have done so choose K equals one and then use the training part for modeling and calculate the accuracy of prediction using the     test set,Repeat this process increasing the K and see which K is best for your model.
+
+Evaluation metrics for Classifiers:
+We pass the test set to our model and we find the predicted labels than we compare the actual values in the test set with the values predicted by the model to calculate the accuracy of the model
+
+There are 3 main evaluation metrics out there: Jaccard index, F1-score and Log loss
+	1-Jaccard index: Also known as the jaccard similarity co-efficent is one of the simplest accuracy measurements
+	Lets say y shows the true and y(hat) shows the predicted values by our classifier,Than we can define jaccard as the size of the intersection divided by the size of the union of the two label sets.
+	|y (intersection) y|/ |y|+ |y| - |y (intersection)y|
+	For example a test size of 10 with 8 correct predictions(intersections) the accuracy by the jaccard index would be:  8/10+10-8  = 0.66
+	
+	2-F1score(a.k.a confusion matrix): For example lets assume that our test set has only 40 rows this matrix shows the corrected and wrong predictions in comparison with the actual labesls each confusion matrix row shows the 		actual true labels in the test set and the columns show the predicted labesls by the classifier, the good thing about the confusion matrix is that it shows the models abitility to correctly predict or seperate the classes.
+	In the specific case of binary classifier such as this example we can interperet these numbers as the count of true positives,false negatives,true negatives and false positives.
+	Based on the count of each section, we can calculate the precision and recall each label. Precision is a measure of the accuracy, provided that class label has been predicted. 
+	It is defined by: precision= True positive/(True positive + False Positive) and  
+
