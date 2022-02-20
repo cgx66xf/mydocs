@@ -10,8 +10,7 @@ def window(): #this function returns a window with a title
     app= QApplication(sys.argv)
     win= QMainWindow()
     win.setGeometry(xpos, ypos, width, height)
-    
-    
+  
     win.show()
     sys.exit(app.exec()) #this lets us do a clean exit
 
