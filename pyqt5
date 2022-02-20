@@ -1,2 +1,18 @@
-pip3 install pyqt5
-pip3 install pyqt5-tools
+pip3 install pyqt6
+pip3 install pyqt6-tools
+
+from PyQt6 import QtWidgets
+from PyQt6.QtWidgets import QApplication, QMainWindow
+import sys
+
+def window(): #this function returns a window with a title
+    app= QApplication(sys.argv)
+    win= QMainWindow()
+    win.setGeometry(xpos, ypos, width, height)
+    
+    
+    win.show()
+    sys.exit(app.exec_()) #this lets us do a clean exit
+
+window()
+     
