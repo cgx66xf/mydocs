@@ -1,5 +1,6 @@
 pip3 install pyqt6
 pip3 install pyqt6-tools
+sudo apt-get install '^libxcb.*-dev' libx11-xcb-dev libglu1-mesa-dev libxrender-dev libxi-dev libxkbcommon-dev libxkbcommon-x11-dev
 
 from PyQt6 import QtWidgets
 from PyQt6.QtWidgets import QApplication, QMainWindow
@@ -12,7 +13,7 @@ def window(): #this function returns a window with a title
     
     
     win.show()
-    sys.exit(app.exec_()) #this lets us do a clean exit
+    sys.exit(app.exec()) #this lets us do a clean exit
 
 window()
      
