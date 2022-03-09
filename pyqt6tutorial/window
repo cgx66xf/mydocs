@@ -25,3 +25,5 @@ app= QApplication([])
 window= Window()
 window.show()
 sys.exit(app.exec())
+
+#designer path /home/troll/.local/lib/python3.9/site-packages/qt6_applications/Qt/bin/
