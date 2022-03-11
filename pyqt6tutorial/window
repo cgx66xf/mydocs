@@ -26,9 +26,9 @@ window= Window()
 window.show()
 sys.exit(app.exec())
 
-#designer path /home/troll/.local/lib/python3.9/site-packages/qt6_applications/Qt/bin/designer
 
-after saving our .ui file in our folder
+#designer path /home/troll/.local/lib/python3.9/site-packages/qt6_applications/Qt/bin/designer
+after saving our .ui file in our folder we can load it from the python program
 from PyQt6.QtWidgets import QApplication, QWidget
 from PyQt6 import uic
 import sys
@@ -45,3 +45,7 @@ app= QApplication(sys.argv)
 window= Ui()
 window.show()
 sys.exit(app.exec())
+
+We can also convert the .ui file to a .py file using ./pyuic6
+find / -name pyuic6
+./pyuic6 -x /home/troll/Desktop/Botproject/untitled.ui -o ui.py
