@@ -275,5 +275,61 @@ window= Window()
 window.show()
 sys.exit(app.exec())
 
+------------Checkbox--------------------
+from PyQt6.QtWidgets import QApplication, QWidget, QHBoxLayout, QCheckBox, QVBoxLayout, QLabel
+from PyQt6.QtGui import QIcon
+import sys
+
+
+class Window(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Pyqt6 checkbox")
+        self.setGeometry(500,200,500,400)
+        self.create_checkbox()
+    
+  
+    def create_checkbox(self):
+        hbox= QHBoxLayout()
+        self.check1= QCheckBox("Python")
+        self.check1.toggled.connect(self.item_Selected)
+        self.check2= QCheckBox("Java")
+        self.check2.toggled.connect(self.item_Selected)
+        self.check3= QCheckBox("C++")
+        self.check3.toggled.connect(self.item_Selected)
+        self.check4= QCheckBox("Ruby")
+        self.check4.toggled.connect(self.item_Selected)
+        hbox.addWidget(self.check1)
+        hbox.addWidget(self.check2)
+        hbox.addWidget(self.check3)
+        hbox.addWidget(self.check4)
+
+        vbox= QVBoxLayout()
+        self.label= QLabel("Label")
+        vbox.addWidget(self.label)
+        vbox.addLayout(hbox)
+        self.setLayout(vbox)
+
+    def item_Selected(self):
+        value= ""
+        if(self.check1.isChecked()):
+            value= value+ self.check1.text()
+        
+        if(self.check2.isChecked()):
+            value= value+ self.check2.text()
+            
+        if(self.check3.isChecked()):
+            value= value+ self.check3.text()
+
+        if(self.check4.isChecked()):
+            value= value+ self.check4.text()
+        
+        self.label.setText("You have selected:" + value)
+
+app= QApplication(sys.argv)
+window= Window()
+window.show()
+sys.exit(app.exec())
+
 
 
