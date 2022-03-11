@@ -49,3 +49,67 @@ sys.exit(app.exec())
 We can also convert the .ui file to a .py file using ./pyuic6
 find / -name pyuic6
 ./pyuic6 -x /home/troll/Desktop/Botproject/untitled.ui -o ui.py
+
+button label fonts example
+from PyQt6.QtWidgets import QApplication, QWidget, QPushButton, QLabel
+from PyQt6.QtGui import QIcon, QFont
+import sys
+
+
+class Window(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("PyQt6 button and label")
+        self.setWindowIcon(QIcon("qt.png"))
+        self.setGeometry(500, 200, 500, 400)
+
+        self.create_widgets()
+    
+    def create_widgets(self):
+        btn= QPushButton("Click me", self)
+        #btn.move(100, 100) #this moves the button to a co-ordinate
+        btn.setGeometry(100, 100, 100, 100) #this sets the geometry for the button
+        btn.setStyleSheet('background-color:red')
+        #btn.setIcon(QIcon('football.png'))
+
+        label= QLabel("My label", self)
+        label.move(100, 200)
+        label.setStyleSheet('color:green')
+        label.setFont(QFont("Times New Roman", 15))
+
+
+
+app= QApplication(sys.argv)
+window= Window()
+window.show()
+sys.exit(app.exec())
+
+------A signal is emmitted when a particular event occurs a slot is called when its connected signal is emmittet--------
+from PyQt6.QtWidgets import QApplication, QWidget, QPushButton, QLabel
+from PyQt6.QtGui import QIcon
+import sys
+
+
+class Window(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("PyQt6 signal and slots")
+        self.setGeometry(500, 200, 500, 400)
+        self.create_widgets()
+    
+    def create_widgets(self):
+        btn= QPushButton("Click me", self)
+        btn.setGeometry(100, 100, 100, 100) #this sets the geometry for the button
+
+        self.label= QLabel("My label", self)
+        self.label.setGeometry(100, 200, 100, 20)
+        btn.clicked.connect(self.clicked_btn)
+    
+    def clicked_btn(self):
+        self.label.setText("Text is changed")
+        self.label.setStyleSheet('background-color:red')
+
+app= QApplication(sys.argv)
+window= Window()
+window.show()
+sys.exit(app.exec())
