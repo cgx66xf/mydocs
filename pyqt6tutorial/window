@@ -113,3 +113,63 @@ app= QApplication(sys.argv)
 window= Window()
 window.show()
 sys.exit(app.exec())
+
+
+----------Qvbox layout---------#creates a vertical layout
+from PyQt6.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton 
+from PyQt6.QtGui import QIcon
+import sys
+
+
+class Window(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("PyQtl6 layouts")
+        self.setGeometry(500, 200, 500, 400)
+
+        vbox= QVBoxLayout()
+
+        btn1= QPushButton("Btn1")
+        btn2= QPushButton("Btn2")
+        btn3= QPushButton("Btn3")
+        btn4= QPushButton("Btn4")
+        vbox.addWidget(btn1)
+        vbox.addWidget(btn2)
+        vbox.addWidget(btn3)
+        vbox.addWidget(btn4)
+        self.setLayout(vbox)
+
+app= QApplication(sys.argv)
+window= Window()
+window.show()
+sys.exit(app.exec())
+--------------------QHBox layout---------Creates a horizontal layout
+from PyQt6.QtWidgets import QApplication, QWidget, QHBoxLayout, QPushButton
+from PyQt6.QtGui import QIcon
+import sys
+
+
+class Window(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Pyqt6 HBoxlayout")
+        self.setWindowIcon(QIcon("qt.png"))
+        self.setGeometry(500,200,500,400)
+
+        hbox= QHBoxLayout()
+
+        btn1= QPushButton("btn1")
+        btn2= QPushButton("btn2")
+        btn3= QPushButton("btn3")
+
+        hbox.addWidget(btn1)
+        hbox.addWidget(btn2)
+        hbox.addWidget(btn3)
+        
+        self.setLayout(hbox)
+
+
+app= QApplication(sys.argv)
+window= Window()
+window.show()
+sys.exit(app.exec())
