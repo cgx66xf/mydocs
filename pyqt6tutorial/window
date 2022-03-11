@@ -27,3 +27,21 @@ window.show()
 sys.exit(app.exec())
 
 #designer path /home/troll/.local/lib/python3.9/site-packages/qt6_applications/Qt/bin/designer
+
+after saving our .ui file in our folder
+from PyQt6.QtWidgets import QApplication, QWidget
+from PyQt6 import uic
+import sys
+
+from gui import window
+
+class Ui(QWidget):
+    def __init__(self):
+        super().__init__()
+        uic.load_ui("untitled.ui", self)
+
+
+app= QApplication(sys.argv)
+window= Ui()
+window.show()
+sys.exit(app.exec())
