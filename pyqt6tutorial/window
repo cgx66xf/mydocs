@@ -405,5 +405,109 @@ window= Window()
 window.show()
 sys.exit(app.exec())
 
+---------------List widget---------------
+from PyQt6.QtWidgets import QApplication, QWidget, QListWidget, QVBoxLayout, QLabel
+from PyQt6.QtGui import QIcon
+import sys
+
+class Window(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Pyqt6 List widget")
+        self.setGeometry(500, 200, 500, 400)
+
+        vbox= QVBoxLayout()
+
+        self.listWidget= QListWidget()
+        self.listWidget.insertItem(0, "Pyqt6")
+        self.listWidget.insertItem(1, "Wxpython")
+        self.listWidget.insertItem(2, "Tktinker")
+        self.listWidget.insertItem(3, "PysimpleGui")
+        self.listWidget.clicked.connect(self.item_Selected)
+
+        self.label= QLabel("Hello")
+
+        vbox.addWidget(self.listWidget)
+        vbox.addWidget(self.label)
+        self.setLayout(vbox)
+
+    def item_Selected(self):
+        item= self.listWidget.currentItem()
+        self.label.setText("You have selected " + str(item.text()))
+
+app= QApplication(sys.argv)
+window= Window()
+window.show()
+sys.exit(app.exec())
+
+------------Combo box-----------
+from PyQt6.QtWidgets import QApplication, QWidget, QComboBox, QVBoxLayout, QLabel
+from PyQt6.QtGui import QIcon
+import sys
+
+class Window(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Pyqt6 Combobox")
+        self.setGeometry(500, 200, 500, 400)
+
+        vbox= QVBoxLayout()
+        self.combo= QComboBox()
+        self.combo.addItem("Pyqt6")
+        self.combo.addItem("Wxpython")
+        self.combo.addItem("Tkinter")
+        self.combo.addItem("Pyside2")
+        self.combo.currentTextChanged.connect(self.combo_item)
+        self.label= QLabel("Hello")
+        vbox.addWidget(self.combo)
+        vbox.addWidget(self.label)
+        self.setLayout(vbox)
+
+    def combo_item(self):
+        value= self.combo.currentText()
+        self.label.setText("You have selected : " + value)
+
+app= QApplication(sys.argv)
+window= Window()
+window.show()
+sys.exit(app.exec())
+
+---------------QMenu------------
+Untill now we were using QWidget but if you wanna use the menu items we should import QMainWindow
+from PyQt6.QtWidgets import QApplication, QMainWindow
+from PyQt6.QtGui import QIcon, QAction
+import sys
+
+class Window(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Pyqt6 Menu")
+        self.setGeometry(500, 200, 500, 400)
+        self.create_Menu()
+
+    def create_Menu(self):
+        mainMenu= self.menuBar()
+        fileMenu= mainMenu.addMenu("File")
+
+        newAction= QAction("New", self)
+        newAction.setShortcut("Ctrl+N")
+        fileMenu.addAction(newAction)
+
+        saveAction= QAction("Save", self)
+        newAction.setShortcut("Ctrl+S")
+        fileMenu.addAction(saveAction)
+
+        exitAction= QAction("Exit", self)
+        exitAction.triggered.connect(self.close_window)
+        fileMenu.addAction(exitAction)
+
+    def close_window(self):
+        self.close()
+
+app= QApplication(sys.argv)
+window= Window()
+window.show()
+sys.exit(app.exec())
+
 
 
