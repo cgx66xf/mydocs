@@ -373,4 +373,37 @@ window= Window()
 window.show()
 sys.exit(app.exec())
 
+----------------Table Widget----------------
+from PyQt6.QtWidgets import QApplication, QWidget, QTableWidget, QTableWidgetItem, QVBoxLayout
+from PyQt6.QtGui import QIcon
+import sys
+
+class Window(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Pyqt6 Table widget")
+        self.setGeometry(500, 200, 500, 400)
+
+        vbox= QVBoxLayout()
+        tableWidget= QTableWidget()
+        tableWidget.setRowCount(3)
+        tableWidget.setColumnCount(3)
+
+        tableWidget.setItem(0, 0, QTableWidgetItem("Name"))
+        tableWidget.setItem(0, 1, QTableWidgetItem("Sirname"))
+        tableWidget.setItem(0, 2, QTableWidgetItem("Email"))
+
+        tableWidget.setItem(1, 0, QTableWidgetItem("Taner"))
+        tableWidget.setItem(2, 0, QTableWidgetItem("Taner"))
+        tableWidget.setItem(3, 0, QTableWidgetItem("Taner"))
+
+        vbox.addWidget(tableWidget)
+        self.setLayout(vbox)
+
+app= QApplication(sys.argv)
+window= Window()
+window.show()
+sys.exit(app.exec())
+
+
 
