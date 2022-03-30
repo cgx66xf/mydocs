@@ -1,0 +1,8 @@
+#We downloaded geckodriver and saved it to usr/bin
+from selenium import webdriver
+
+driver= webdriver.Firefox()
+#print(driver.title) prints the title of the page
+#driver.close() closes the tab
+#driver.quit() closes the browser 
+
